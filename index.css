@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Design tokens (Light / Dark) ---------- */
+:root {
+  --app: #f8fafc;
+  --card: #ffffff;
+  --ink: #1e293b;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --field: #f1f5f9;
+  --accent: #059669;
+  --accent-soft: #ecfdf5;
+  --gold: #d97706;
+  --gold-soft: #fef3c7;
+  --navy: #1e293b;
+}
+
+.dark {
+  --app: #0f172a;
+  --card: #1e293b;
+  --ink: #f8fafc;
+  --muted: #94a3b8;
+  --line: #334155;
+  --field: #0f172a;
+  --accent: #10b981;
+  --accent-soft: rgba(16, 185, 129, 0.12);
+  --gold: #f59e0b;
+  --gold-soft: rgba(217, 119, 6, 0.16);
+  --navy: #162033;
+}
+
+@theme inline {
+  --color-app: var(--app);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-field: var(--field);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-navy: var(--navy);
+
+  --font-arabic: "Amiri", "Scheherazade New", serif;
+  --font-bn: "Hind Siliguri", "Inter", sans-serif;
+  --font-en: "Inter", "Hind Siliguri", sans-serif;
+
+  --animate-fade-in: fade-in 0.2s ease-out both;
+  --animate-sheet-up: sheet-up 0.28s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+  --animate-side-in: side-in 0.28s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+  --animate-pop: pop 0.16s ease-out both;
+  --animate-bar: bar 0.9s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes sheet-up {
+    from { transform: translateY(100%); opacity: 0.6; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes side-in {
+    from { transform: translateX(24px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes pop {
+    from { transform: scale(0.96) translateY(-4px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+  }
+  @keyframes bar {
+    0%, 100% { transform: scaleY(0.35); }
+    50% { transform: scaleY(1); }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-en);
+    background: var(--app);
+    color: var(--ink);
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  html[lang="bn"] body {
+    font-family: var(--font-bn);
+  }
+  button {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  input[type="range"] {
+    accent-color: var(--accent);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

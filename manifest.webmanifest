@@ -1,0 +1,13 @@
+{
+  "name": "নূর — Islamic Companion",
+  "short_name": "Noor",
+  "description": "Quran, Hadith, Islamic library and ibadah tracker in Bangla & English.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#1E293B",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
